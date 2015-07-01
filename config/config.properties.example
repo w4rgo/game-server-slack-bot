@@ -1,0 +1,7 @@
+#Mon Jun 29 21:28:27 BST 2015
+mongodb-ip=localhost
+mongodb-port=27017
+mongodb-database=slackbot
+slack-token=your-slackbot-integration-token
+slack-channel=your-slack-channel
+slack-bot-name=your-bot-name
