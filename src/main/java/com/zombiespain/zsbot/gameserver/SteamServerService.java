@@ -56,6 +56,7 @@ public class SteamServerService implements ISteamServerService {
     public HashMap<String, Object> getServerInfo(String name) throws GameServerNotFoundException {
         try {
             if (gameServerConnections.containsKey(name)) {
+                gameServerConnections.get(name).updateServerInfo();
                 return gameServerConnections.get(name).getServerInfo();
             } else {
                 throw new GameServerNotFoundException();
@@ -72,6 +73,7 @@ public class SteamServerService implements ISteamServerService {
     public HashMap<String, SteamPlayer> getPlayers(String name) throws GameServerNotFoundException {
         try {
             if (gameServerConnections.containsKey(name)) {
+                gameServerConnections.get(name).updatePlayers();
                 return gameServerConnections.get(name).getPlayers();
             } else {
                 throw new GameServerNotFoundException();
@@ -88,6 +90,7 @@ public class SteamServerService implements ISteamServerService {
     public int getPing(String name) throws GameServerNotFoundException {
         try {
             if (gameServerConnections.containsKey(name)) {
+                gameServerConnections.get(name).updatePing();
                 return gameServerConnections.get(name).getPing();
             } else {
                 throw new GameServerNotFoundException();
