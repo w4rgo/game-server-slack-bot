@@ -1,5 +1,6 @@
 package com.zombiespain.zsbot.servers;
 
+import com.mongodb.BasicDBObject;
 import com.zombiespain.zsbot.db.JongoService;
 import com.zombiespain.zsbot.gameserver.SteamServerService;
 import org.jongo.MongoCollection;
@@ -26,15 +27,15 @@ public class GameServersPersistanceService implements IGameServersPersistanceSer
         SteamServerService.getInstance().addServer(server);
     }
 
-    public void removeServer(GameServer server) {
+    public void removeServer(String name) {
 
         MongoCollection servers = getGameServersCollection();
-        servers.remove(server.getName());
+        servers.remove(name);
     }
 
     public GameServer getServer(String name) {
         MongoCollection servers = getGameServersCollection();
-        MongoCursor<GameServer> server = servers.find(name).as(GameServer.class);
+        MongoCursor<GameServer> server = servers.find("{_id: '"+name +"'}").as(GameServer.class);
         return server.next();
     }
 

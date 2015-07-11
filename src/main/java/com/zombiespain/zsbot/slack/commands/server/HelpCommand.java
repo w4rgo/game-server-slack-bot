@@ -1,6 +1,5 @@
 package com.zombiespain.zsbot.slack.commands.server;
 
-import com.zombiespain.zsbot.Config;
 import com.zombiespain.zsbot.slack.SlackService;
 import com.zombiespain.zsbot.slack.commands.BaseCommand;
 import com.zombiespain.zsbot.slack.commands.CommandExecutor;

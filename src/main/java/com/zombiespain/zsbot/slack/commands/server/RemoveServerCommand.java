@@ -1,30 +1,28 @@
 package com.zombiespain.zsbot.slack.commands.server;
 
-import com.zombiespain.zsbot.servers.GameServer;
 import com.zombiespain.zsbot.servers.GameServersPersistanceService;
 import com.zombiespain.zsbot.slack.SlackService;
 import com.zombiespain.zsbot.slack.commands.BaseCommand;
 
-public class AddServerCommand extends BaseCommand {
+public class RemoveServerCommand extends BaseCommand {
 
     public String name() {
-        return "addserver";
+        return "removeserver";
     }
 
     public String description() {
-        return "addserver <name> <ip> <port> <rconpass> <rconport> - adds a server";
+        return "removeserver <name> removes a server";
     }
 
     public int paramNumber() {
-        return 5;
+        return 1;
     }
 
     public void doTask(String[] args) {
         try {
-            GameServer server = new GameServer(args[0], args[1], Integer.valueOf(args[2]) , args[3] , Integer.valueOf(args[4]));
-            GameServersPersistanceService.getInstance().addServer(server);
+            GameServersPersistanceService.getInstance().removeServer(args[0]);
 
-            SlackService.getInstance().sendMessage("Added: " + server.getName());
+            SlackService.getInstance().sendMessage("Removing: " + args[0]);
         } catch (NumberFormatException e) {
             SlackService.getInstance().sendMessage("The port must be a number");
         }

@@ -2,7 +2,6 @@ package com.zombiespain.zsbot.slack;
 
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
-import com.zombiespain.zsbot.Config;
 import com.zombiespain.zsbot.config.ConfigurationService;
 
 import java.io.IOException;
@@ -44,12 +43,12 @@ public class SlackService implements ISlackService {
     }
 
     public void sendMessage(String channel, String message) {
-        session.sendMessageOverWebSocket(session.findChannelByName(channel), message, null);
+        //session.sendMessageOverWebSocket(session.findChannelByName(channel), message, null);
         System.out.println(message);
     }
 
     public void sendMessage(String message) {
-        session.sendMessageOverWebSocket(session.findChannelByName(ConfigurationService.getInstance().getSlackChannel()), message, null);
+        //session.sendMessageOverWebSocket(session.findChannelByName(ConfigurationService.getInstance().getSlackChannel()), message, null);
         System.out.println(message);
     }
 

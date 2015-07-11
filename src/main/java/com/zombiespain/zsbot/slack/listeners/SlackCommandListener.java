@@ -4,7 +4,6 @@ import com.ullink.slack.simpleslackapi.SlackAttachment;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.events.SlackMessagePosted;
 import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
-import com.zombiespain.zsbot.Config;
 import com.zombiespain.zsbot.config.ConfigurationService;
 import com.zombiespain.zsbot.slack.commands.CommandExecutor;
 import com.zombiespain.zsbot.slack.commands.CommandNotFoundException;

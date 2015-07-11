@@ -39,11 +39,14 @@ public class Main {
         CommandExecutor.getInstance().addCommand(new GameServerConnectCommand());
         CommandExecutor.getInstance().addCommand(new GameServerDisconnectAllCommand());
         CommandExecutor.getInstance().addCommand(new GameServerConnectAllCommand());
+        CommandExecutor.getInstance().addCommand(new GameServerRconConnectCommand());
+        CommandExecutor.getInstance().addCommand(new GameServerRconExecCommand());
+        CommandExecutor.getInstance().addCommand(new RemoveServerCommand());
         //CommandExecutor.getInstance().addCommand(new GameServerDisconnectCommand());
 
 
-        SlackService.getInstance().connect();
-        SlackService.getInstance().getSession().addMessagePostedListener(new SlackCommandListener());
+        //SlackService.getInstance().connect();
+        //SlackService.getInstance().getSession().addMessagePostedListener(new SlackCommandListener());
 
         populateGameServers();
 
@@ -58,13 +61,17 @@ public class Main {
         }
     }
 
-    private static void startCommandLineClient() throws CommandNotFoundException {
+    private static void startCommandLineClient()  {
         while (true) {
             Scanner scanner = new Scanner(System.in);
 
             String command = scanner.nextLine();
             System.out.println(command);
-            CommandExecutor.getInstance().execute(command);
+            try {
+                CommandExecutor.getInstance().execute(command);
+            } catch (CommandNotFoundException e) {
+                System.out.println("Command not found!");
+            }
         }
     }
 

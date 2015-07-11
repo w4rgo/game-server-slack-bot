@@ -10,17 +10,19 @@ public class GameServer {
     private int port;
     private String ip;
     private String rconPass;
+    private int rconPort;
 
     public GameServer() {
 
     }
 
-    public GameServer(String name, String ip, int port, String rconPass) {
+    public GameServer(String name, String ip, int port, String rconPass, int rconPort) {
         super();
         this.name = name;
         this.ip = ip;
         this.port = port;
         this.rconPass = rconPass;
+        this.rconPort = rconPort;
     }
 
     public GameServer(String name, String ip, int port) {
@@ -29,6 +31,7 @@ public class GameServer {
         this.ip = ip;
         this.port = port;
         this.rconPass = "";
+        this.rconPort = 0;
     }
 
     public String getName() {
@@ -55,6 +58,10 @@ public class GameServer {
         return ip;
     }
 
+    public int getRconPort() {
+        return rconPort;
+    }
+
     @Override
     public String toString() {
         return "GameServer{" +
@@ -62,6 +69,7 @@ public class GameServer {
                 ", port=" + port +
                 ", ip='" + ip + '\'' +
                 ", rconPass='" + rconPass + '\'' +
+                ", rconPort=" + rconPort +
                 '}';
     }
 }
